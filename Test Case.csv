@@ -1,0 +1,40 @@
+"Your Company LOGO";"Project Name:";"Automasi Pengujian Aplikasi Mobile (My Demo App)";"Test Designed by:";"Muhammad Aidil Fitrah";"";"";"";"";""
+"";"Module Name:";"Autentikasi (Login)";"Test Designed date:";"09 Juni 2026";"";"";"";"";""
+"";"Release Version:";"1.0";"Test Executed by:";"Muhammad Aidil Fitrah";"";"";"";"";""
+"";"";"";"Test Execution date:";"09 Juni 2026";"";"";"";"";""
+"";"";"";"";"";"";"";"";"";""
+"Pre-condition";"Aplikasi Android Sauce Labs My Demo App terinstal dan terbuka";"";"";"";"";"";"";"";""
+"Dependencies:";"Appium, Java, TestNG, Kabel USB, Perangkat Android Asli";"";"";"";"";"";"";"";""
+"Test Priority";"High";"";"";"";"";"";"";"";""
+"";"";"";"";"";"";"";"";"";""
+"Test Case#";"Test Title";"Test Summary";"Test Steps";"Test Data";"Expected Result";"Post-condition";"Actual Result";"Status";"Notes"
+"TC01";"Login Berhasil";"Memastikan pengguna dapat login menggunakan kredensial yang valid";"1. Buka navigasi menu
+2. Klik opsi 'Log In'
+3. Isi username
+4. Isi password
+5. Klik tombol Login";"Username: bob@example.com
+Password: 10203040";"Aplikasi mengarahkan pengguna ke halaman Products";"Halaman produk tampil secara sempurna";"Aplikasi berhasil masuk dan halaman Products muncul";"Done";"-"
+"TC02";"Login Gagal (Password Salah)";"Memastikan sistem menolak proses login jika password salah";"1. Buka navigasi menu
+2. Klik opsi 'Log In'
+3. Isi username valid
+4. Isi password salah
+5. Klik tombol Login";"Username: bob@example.com
+Password: passwordsalah123";"Muncul peringatan 'Provided credentials do not match...'";"Pengguna tetap berada di halaman form login";"Peringatan password salah muncul sesuai dengan ekspektasi";"Done";"-"
+"TC03";"Login Gagal (Akun Terkunci)";"Memastikan akun yang terblokir tidak bisa mengakses sistem";"1. Buka navigasi menu
+2. Klik opsi 'Log In'
+3. Isi username yang dikunci
+4. Isi password
+5. Klik tombol Login";"Username: alice@example.com
+Password: 10203040";"Muncul peringatan 'Sorry, this user has been locked out.'";"Pengguna tetap berada di halaman form login";"Peringatan akun diblokir muncul sesuai dengan ekspektasi";"Done";"-"
+"TC04";"Login Gagal (Username Kosong)";"Memastikan validasi keamanan berjalan saat username tidak diisi";"1. Buka navigasi menu
+2. Klik opsi 'Log In'
+3. Kosongkan username
+4. Isi password
+5. Klik tombol Login";"Username: [KOSONG]
+Password: 10203040";"Sistem menolak dan memunculkan 'Username is required'";"Pengguna gagal login dan diminta mengisi username";"Sistem berhasil memblokir dan validasi form muncul";"Done";"-"
+"TC05";"Login Gagal (Password Kosong)";"Memastikan validasi keamanan berjalan saat password tidak diisi";"1. Buka navigasi menu
+2. Klik opsi 'Log In'
+3. Isi username
+4. Kosongkan password
+5. Klik tombol Login";"Username: bob@example.com
+Password: [KOSONG]";"Sistem menolak dan memunculkan 'Password is required'";"Pengguna gagal login dan diminta mengisi password";"Sistem berhasil memblokir dan validasi form muncul";"Done";"-"

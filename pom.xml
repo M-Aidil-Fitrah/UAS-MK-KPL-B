@@ -19,14 +19,29 @@
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>8.5.1</version>
+            <version>9.2.2</version>
         </dependency>
 
-        <!-- Selenium Java (Wajib ditambahkan secara eksplisit untuk mencegah error ClassNotFound) -->
+        <!-- Selenium Dependencies (Eksplisit untuk mencegah missing classes) -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.11.0</version>
+            <version>4.21.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>4.21.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>4.21.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>4.21.0</version>
         </dependency>
 
         <!-- TestNG for assertions and test running -->

@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -20,8 +20,12 @@ public class UasKplTest {
     private AndroidDriver driver;
     private WebDriverWait wait;
 
-    @BeforeTest
+    @BeforeMethod
     public void setup() throws MalformedURLException {
+        System.out.println("==== DEBUG INFO ====");
+        System.out.println("AndroidDriver location: " + AndroidDriver.class.getProtectionDomain().getCodeSource().getLocation());
+        System.out.println("====================");
+        
         // 1. Tentukan lokasi file APK di dalam project
         File appDir = new File("app");
         File app = new File(appDir, "Android-MyDemoAppRN.1.3.0.build-244.apk");
@@ -35,6 +39,13 @@ public class UasKplTest {
                 .setAppPackage("com.saucelabs.mydemoapp.rn")
                 .setAppActivity(".MainActivity")
                 .setNoReset(false); // Selalu mulai dari awal untuk setiap test (bersihkan cache login)
+        
+        // Mem-bypass peringatan Security Settings pada HP Vivo/Oppo/Xiaomi
+        options.setCapability("appium:ignoreHiddenApiPolicyError", true);
+        
+        // Mencegah Appium menginstal ulang helper apps dengan flag -g (yang diblokir Xiaomi)
+        options.setCapability("appium:skipServerInstallation", true);
+        options.setCapability("appium:skipDeviceInitialization", true);
 
         // 3. Tentukan URL dari Appium Server
         URL appiumServerUrl = new URL("http://127.0.0.1:4723");
@@ -128,7 +139,7 @@ public class UasKplTest {
         Assert.assertTrue(errorMsg.isDisplayed(), "Pesan error akun terblokir tidak muncul!");
     }
 
-    @AfterTest
+    @AfterMethod
     public void teardown() {
         // Menutup aplikasi dan driver setelah semua test selesai
         if (driver != null) {

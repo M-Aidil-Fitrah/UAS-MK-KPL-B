@@ -138,6 +138,45 @@ public class UasKplTest {
         WebElement errorMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[contains(@text, 'Sorry, this user has been locked out.')]")));
         Assert.assertTrue(errorMsg.isDisplayed(), "Pesan error akun terblokir tidak muncul!");
     }
+    @Test(priority = 4)
+    public void TC04_LoginFailed_NoUsername() {
+        System.out.println("Menjalankan Test Case 4: Login Gagal (Username Kosong)");
+        navigateToLogin();
+
+        // Biarkan Username kosong, langsung isi password
+        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId("Password input field")));
+        passwordField.clear();
+        passwordField.sendKeys("10203040");
+
+        // Klik tombol Login
+        WebElement loginBtn = driver.findElement(AppiumBy.accessibilityId("Login button"));
+        loginBtn.click();
+
+        // Verifikasi pesan error 'Username is required' muncul
+        WebElement errorMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[contains(@text, 'Username is required')]")));
+        Assert.assertTrue(errorMsg.isDisplayed(), "Pesan error username kosong tidak muncul!");
+    }
+
+    @Test(priority = 5)
+    public void TC05_LoginFailed_NoPassword() {
+        System.out.println("Menjalankan Test Case 5: Login Gagal (Password Kosong)");
+        navigateToLogin();
+
+        // Isi Username
+        WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId("Username input field")));
+        usernameField.clear();
+        usernameField.sendKeys("bob@example.com");
+
+        // Biarkan Password kosong (jangan diisi apa-apa)
+
+        // Klik tombol Login
+        WebElement loginBtn = driver.findElement(AppiumBy.accessibilityId("Login button"));
+        loginBtn.click();
+
+        // Verifikasi pesan error 'Password is required' muncul
+        WebElement errorMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[contains(@text, 'Password is required')]")));
+        Assert.assertTrue(errorMsg.isDisplayed(), "Pesan error password kosong tidak muncul!");
+    }
 
     @AfterMethod
     public void teardown() {

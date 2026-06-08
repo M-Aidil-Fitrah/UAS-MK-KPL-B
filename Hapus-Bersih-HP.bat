@@ -5,6 +5,9 @@ echo ===================================================
 echo.
 echo Pastikan HP sudah menyala dan kabel USB terhubung!
 echo.
+echo Menghapus Aplikasi Utama (My Demo App)...
+adb uninstall com.saucelabs.mydemoapp.rn
+echo.
 echo Menghapus Appium Settings...
 adb uninstall io.appium.settings
 echo.

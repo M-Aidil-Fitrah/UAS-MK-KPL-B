@@ -5,6 +5,9 @@ echo ===================================================
 echo.
 echo Pastikan HP sudah menyala dan kabel USB terhubung!
 echo.
+echo Menginstal Aplikasi Utama (My Demo App)...
+adb install "%~dp0app\Android-MyDemoAppRN.1.3.0.build-244.apk"
+echo.
 echo Menginstal Appium Settings...
 adb install "%USERPROFILE%\.appium\node_modules\appium-uiautomator2-driver\node_modules\io.appium.settings\apks\settings_apk-debug.apk"
 echo.

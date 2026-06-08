@@ -30,7 +30,7 @@ public class UasKplTest {
         UiAutomator2Options options = new UiAutomator2Options()
                 .setPlatformName("Android")
                 .setAutomationName("UiAutomator2")
-                .setDeviceName("emulator-5554")
+                .setDeviceName("My Android Phone") // Appium akan otomatis mendeteksi HP yang dicolok via kabel USB
                 .setApp(app.getAbsolutePath())
                 .setAppPackage("com.saucelabs.mydemoapp.rn")
                 .setAppActivity(".MainActivity")
